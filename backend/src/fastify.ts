@@ -10,7 +10,7 @@ import multiparr from '@fastify/multipart';
 const	server = fastify({logger: true});
 
 // Register Plugins
-server.register(cors, {origin: [], credentials: true});
+server.register(cors, {origin: ["https://youbella-e-commerce.vercel.app"], credentials: true});
 server.register(postgres,
 {
 	connectionString: process.env.DATABASE_PUBLIC_URL,
