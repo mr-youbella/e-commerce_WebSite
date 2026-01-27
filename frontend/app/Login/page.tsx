@@ -16,7 +16,7 @@ export default async function Login(): Promise<JSX.Element>
 	{
 		try
 		{
-			response = await fetch("http://localhost:3001/verfiy",
+			response = await fetch(`${process.env.BACKEND_URL}/verfiy`,
 			{
 				headers: {Authorization: `Bearer ${cookie.get("token")?.value}`}
 			});

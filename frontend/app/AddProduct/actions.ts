@@ -37,7 +37,7 @@ export async function sendData(pre_state: State, form_data: FormData): Promise<S
 			return ({error: "Plase set category"});
 		fd.append("data", JSON.stringify(data));
 		fd.append("image", data.image);
-		response = await fetch("http://localhost:3001/products",
+		response = await fetch(`${process.env.BACKEND_URL}/products`,
 		{
 			method: "POST",
 			body: fd

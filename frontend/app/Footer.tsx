@@ -7,7 +7,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 async function sendEmail(form_data: FormData)
 {
 	'use server';
-	let	response = await fetch("http://localhost:3001/subscribe",
+	let	response = await fetch(`${process.env.BACKEND_URL}/subscribe`,
 	{
 		method: "POST",
 		headers: {"Content-Type": "application/json"},
