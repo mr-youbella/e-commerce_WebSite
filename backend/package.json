@@ -1,0 +1,31 @@
+{
+	"name": "backend",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx nodemon src/fastify.ts ",
+		"build": "tsc",
+		"start": "node dist/fastify.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@fastify/cors": "^11.2.0",
+		"fastify": "^5.7.1",
+		"fastify-postgres": "^3.6.0",
+		"nodemon": "^3.1.11"
+	},
+	"devDependencies": {
+		"@fastify/cookie": "^11.0.2",
+		"@fastify/jwt": "^10.0.0",
+		"@fastify/multipart": "^9.4.0",
+		"@types/node": "^25.0.9",
+		"@types/pg": "^8.16.0",
+		"argon2": "^0.44.0",
+		"cloudinary": "^2.9.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3"
+	}
+}
