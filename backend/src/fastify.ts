@@ -6,11 +6,14 @@ import argon2 from 'argon2';
 import jwt from '@fastify/jwt';
 import { v2 as cloudinary } from 'cloudinary';
 import multiparr from '@fastify/multipart';
+import dotenv from 'dotenv';
+
+dotenv.config({path: "../.env.local"})
 
 const	server = fastify({logger: true});
 
 // Register Plugins
-server.register(cors, {origin: ["https://youbella-e-commerce.vercel.app"], credentials: true});
+server.register(cors, {origin: ["https://youbella-e-commerce.vercel.app", "http://localhost:3000"]});
 server.register(postgres,
 {
 	connectionString: process.env.DATABASE_PUBLIC_URL,
