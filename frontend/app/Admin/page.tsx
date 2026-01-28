@@ -78,9 +78,9 @@ export default function Admin(): JSX.Element
 						<button className="hover:text-white hover:bg-blue-500 p-1 rounded-md cursor-pointer transition-color duration-100">Clear Filter</button>
 					</div>
 				</div>
-				<div className="border rounded-md my-13 p-4 mx-auto">
-					<div className="flex bg-blue-400 mx-auto">
-						<h3 className="flex-3">PRODUCT</h3>
+				<div className="border rounded-md mx-auto text-center">
+					<div className="flex mx-auto border-b border-gray-400 w-full p-3 bg-gray-100 rounded-md">
+						<h3 className="flex-3 text-left">PRODUCT</h3>
 						<h3 className="flex-1">VENDOR</h3>
 						<h3 className="flex-1">PRICE</h3>
 						<h3 className="flex-1">CATEGORY</h3>
@@ -88,17 +88,61 @@ export default function Admin(): JSX.Element
 						<h3 className="flex-1">DATE</h3>
 						<h3 className="flex-1">ACTIONS</h3>
 					</div>
-					<div className="flex mt-2">
+					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
 						<div className="flex-3 flex">
 							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
 							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
 						</div>
-						<p className="flex-1">Youbella</p>
-						<p className="flex-1">150 DH</p>
-						<p className="flex-1">Sport</p>
-						<p className="flex-1">Pending</p>
-						<p className="flex-1">Jan 15</p>
-						<button className="flex-1 text-center bg-amber-500"><FontAwesomeIcon icon={faAngleDown}/></button>
+						<p className="flex-1 my-auto font-bold">Youbella</p>
+						<p className="flex-1 my-auto font-bold">150 DH</p>
+						<p className="flex-1 my-auto">Sport</p>
+						<p className="flex-1 my-auto text-sm p-0.5 bg-yellow-400/40 rounded-xl text-yellow-600 font-bold">Pending</p>
+						<p className="flex-1 my-auto">Jan 15</p>
+						<div className="flex-1">
+							<button className="flex-1"><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
+						</div>
+					</div>
+					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
+						<div className="flex-3 flex">
+							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
+							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
+						</div>
+						<p className="flex-1 my-auto font-bold">Youbella</p>
+						<p className="flex-1 my-auto font-bold">150 DH</p>
+						<p className="flex-1 my-auto">Sport</p>
+						<p className="flex-1 my-auto text-sm p-0.5 bg-green-400/40 rounded-xl text-green-600 font-bold">Approved</p>
+						<p className="flex-1 my-auto">Jan 15</p>
+						<div className="flex-1">
+							<button className="flex-1"><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
+						</div>
+					</div>
+					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
+						<div className="flex-3 flex">
+							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
+							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
+						</div>
+						<p className="flex-1 my-auto font-bold">Youbella</p>
+						<p className="flex-1 my-auto font-bold">150 DH</p>
+						<p className="flex-1 my-auto">Sport</p>
+						<p className="flex-1 my-auto text-sm p-0.5 bg-blue-400/40 rounded-xl text-blue-600 font-bold">Needs Changes</p>
+						<p className="flex-1 my-auto">Jan 15</p>
+						<div className="flex-1">
+							<button><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
+						</div>
+					</div>
+					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
+						<div className="flex-3 flex">
+							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
+							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
+						</div>
+						<p className="flex-1 my-auto font-bold">Youbella</p>
+						<p className="flex-1 my-auto font-bold">150 DH</p>
+						<p className="flex-1 my-auto">Sport</p>
+						<p className="flex-1 my-auto text-sm p-0.5 bg-red-400/40 rounded-xl text-red-600 font-bold">Rejected</p>
+						<p className="flex-1 my-auto">Jan 15</p>
+						<div className="flex-1">
+							<button><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
+						</div>
 					</div>
 				</div>
 			</div>
