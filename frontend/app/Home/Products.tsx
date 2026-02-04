@@ -30,7 +30,7 @@ export default async function Products()
 				</div>
 				<div className="overflow-y-hidden custom-scroll border border-gray-300 rounded-md">
 					<div className="flex text-[#000000] m-2 gap-2">
-						{products && products.map((value, index) =>
+						{products && products.filter((value) => (value.status === "approved")).map((value, index) =>
 						{
 							return (
 								<Link key={index} className="cursor-pointer hover:shadow-2xl p-1 transition duration-300 hover:scale-105" href={`./Store/${value.title}?id=${value.id}`}>
@@ -105,7 +105,7 @@ export default async function Products()
 					</div>
 				</div>
 				<div className="grid gap-5 grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-items-center text-black">
-					{products && products.map((value, index) =>
+					{products && products.filter((value) => (value.status === "approved")).map((value, index) =>
 					{
 						return (
 							<Link key={index} className="w-full cursor-pointer hover:shadow-2xl p-1 transition duration-300 hover:scale-105" href={`./Store/${value.title}?id=${value.id}`}>

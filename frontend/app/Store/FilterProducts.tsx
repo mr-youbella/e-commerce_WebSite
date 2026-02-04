@@ -152,7 +152,7 @@ export default function FilterProduct({category_id}: {category_id: number}): JSX
 						</select>
 					</div>
 					<div className="grid grid-cols-2 sm:grid-cols-3 gap-1 justify-items-center text-black">
-						{is_loading ? <LoadingProducts /> : filter_product?.map((value, index) =>
+						{is_loading ? <LoadingProducts /> : filter_product?.filter((value) => (value.status === "approved")).map((value, index) =>
 						{
 							return (
 								<Link key={index} className="w-full sm:w-[80%] cursor-pointer hover:shadow-2xl p-1 transation duration-300 hover:scale-105" href={`./Store/${value.title}?id=${value.id}`}>

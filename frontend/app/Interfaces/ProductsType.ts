@@ -10,4 +10,5 @@ export interface ProductsType
 	description: string;
 	attributes: string;
 	values_attributes: string;
+	status?: string;
 }

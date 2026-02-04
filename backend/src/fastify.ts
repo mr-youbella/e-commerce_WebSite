@@ -72,7 +72,7 @@ server.post<{Body: ProductsType}>("/products", async (req, res) =>
 	}
 	try
 	{
-		const	{rows} = await server.pg.query(`INSERT INTO products (title, price, old_price, image, category, about, description, attributes, values_attributes) VALUES ('${product_data.title}', '${product_data.price}', '${product_data.old_price}', '${image_url}', '${product_data.category}', '${product_data.about}', '${product_data.description}', '${product_data.attributes}', '${product_data.values_attributes}')`);
+		await server.pg.query(`INSERT INTO products (title, price, old_price, image, category, about, description, attributes, values_attributes, status) VALUES ('${product_data.title}', '${product_data.price}', '${product_data.old_price}', '${image_url}', '${product_data.category}', '${product_data.about}', '${product_data.description}', '${product_data.attributes}', '${product_data.values_attributes}', 'pending')`);
 	}
 	catch (e)
 	{

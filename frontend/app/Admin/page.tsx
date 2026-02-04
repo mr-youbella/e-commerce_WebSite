@@ -2,10 +2,51 @@ import {JSX} from 'react';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faCircleCheck, faXmark, faExclamation, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faCircleCheck, faXmark, faExclamation } from '@fortawesome/free-solid-svg-icons';
+import type { ProductsType } from '../Interfaces/ProductsType'
+import ProductApi from '../GET/ProductsApi'
+import ButtonSetStatus from './ButtonSetStatus';
 
-export default function Admin(): JSX.Element
+export default async function Admin(): Promise<JSX.Element>
 {
+	let products: ProductsType[] | undefined = undefined;
+	try
+	{
+		products = await ProductApi();
+	}
+	catch (err)
+	{
+		console.log(err);
+	}
+	function getCategoryName(id: number): string
+	{
+		switch (id)
+		{
+			case 1: return ("Electronics");
+			case 2: return ("Fashion & Apparel");
+			case 3: return ("Beauty & Personal Care");
+			case 4: return ("Home & Living");
+			case 5: return ("Baby & Kids");
+			case 6: return ("Health & Fitness");
+			case 7: return ("Books & Stationery");
+			case 8: return ("Automotive");
+			case 9: return ("Pet Supplies");
+			case 10: return ("Gifts");
+		}
+		return ("Name category");
+	}
+	function statusStyle(status: string): string
+	{
+		switch (status)
+		{
+			case "pending": return ("text-yellow-600 bg-yellow-400/40");
+			case "approved": return ("text-green-600 bg-green-400/40");
+			case "needs changes": return ("text-blue-600 bg-blue-400/40");
+			case "rejected": return ("text-red-600 bg-red-400/40");
+		}
+		return ("");
+	}
+
 	return (
 		<div className="flex flex-col min-h-screen">
 			<NavBar />
@@ -88,62 +129,23 @@ export default function Admin(): JSX.Element
 						<h3 className="flex-1">DATE</h3>
 						<h3 className="flex-1">ACTIONS</h3>
 					</div>
-					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
-						<div className="flex-3 flex">
-							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
-							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
+					{products && products.map((value, index) =>
+					{
+						return (
+							<div key={index} className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
+								<div className="flex-3 flex">
+									<img className="w-10" src={value.image}></img>
+									<h3 className="my-auto mx-1 font-bold text-sm">{value.title}</h3>
+								</div>
+								<p className="flex-1 my-auto font-bold">Youbella</p>
+								<p className="flex-1 my-auto font-bold">{value.price} DH</p>
+								<p className="flex-1 my-auto">{getCategoryName(value.category)}</p>
+								<p className={`flex-1 my-auto text-sm p-0.5 rounded-xl ${statusStyle(value.status!)} font-bold capitalize`}>{value.status}</p>
+								<p className="flex-1 my-auto">Jan 15</p>
+								<ButtonSetStatus />
 						</div>
-						<p className="flex-1 my-auto font-bold">Youbella</p>
-						<p className="flex-1 my-auto font-bold">150 DH</p>
-						<p className="flex-1 my-auto">Sport</p>
-						<p className="flex-1 my-auto text-sm p-0.5 bg-yellow-400/40 rounded-xl text-yellow-600 font-bold">Pending</p>
-						<p className="flex-1 my-auto">Jan 15</p>
-						<div className="flex-1">
-							<button className="flex-1"><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
-						</div>
-					</div>
-					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
-						<div className="flex-3 flex">
-							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
-							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
-						</div>
-						<p className="flex-1 my-auto font-bold">Youbella</p>
-						<p className="flex-1 my-auto font-bold">150 DH</p>
-						<p className="flex-1 my-auto">Sport</p>
-						<p className="flex-1 my-auto text-sm p-0.5 bg-green-400/40 rounded-xl text-green-600 font-bold">Approved</p>
-						<p className="flex-1 my-auto">Jan 15</p>
-						<div className="flex-1">
-							<button className="flex-1"><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
-						</div>
-					</div>
-					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
-						<div className="flex-3 flex">
-							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
-							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
-						</div>
-						<p className="flex-1 my-auto font-bold">Youbella</p>
-						<p className="flex-1 my-auto font-bold">150 DH</p>
-						<p className="flex-1 my-auto">Sport</p>
-						<p className="flex-1 my-auto text-sm p-0.5 bg-blue-400/40 rounded-xl text-blue-600 font-bold">Needs Changes</p>
-						<p className="flex-1 my-auto">Jan 15</p>
-						<div className="flex-1">
-							<button><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
-						</div>
-					</div>
-					<div className="flex p-3 border-b border-gray-400 hover:bg-gray-100">
-						<div className="flex-3 flex">
-							<img className="w-10" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"></img>
-							<h3 className="my-auto mx-1 font-bold text-sm">TPremium Wireless Headphones...</h3>
-						</div>
-						<p className="flex-1 my-auto font-bold">Youbella</p>
-						<p className="flex-1 my-auto font-bold">150 DH</p>
-						<p className="flex-1 my-auto">Sport</p>
-						<p className="flex-1 my-auto text-sm p-0.5 bg-red-400/40 rounded-xl text-red-600 font-bold">Rejected</p>
-						<p className="flex-1 my-auto">Jan 15</p>
-						<div className="flex-1">
-							<button><FontAwesomeIcon className="hover:bg-blue-500 hover:text-white p-3 rounded-md cursor-pointer" icon={faAngleDown}/></button>
-						</div>
-					</div>
+						);
+					})}
 				</div>
 			</div>
 			<Footer />
