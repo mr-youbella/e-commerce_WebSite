@@ -1,6 +1,6 @@
 "use client";
 import {useEffect, useRef, type JSX} from 'react';
-import {ToastContainer, toast} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faL, faLock} from '@fortawesome/free-solid-svg-icons';
 import {LoginFormData} from './actions';

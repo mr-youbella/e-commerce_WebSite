@@ -11,8 +11,6 @@ export default async function ProductApi(): Promise<ProductsType[] | undefined>
 			headers: {"secret-key": process.env.SECRET_KEY!},
 			cache: "no-cache",
 		});
-		if (!response.ok)
-			throw new Error("Failed to fetch products");
 		products = await response.json();
 	}
 	catch
@@ -21,4 +19,3 @@ export default async function ProductApi(): Promise<ProductsType[] | undefined>
 	}
 	return (products);
 }
-

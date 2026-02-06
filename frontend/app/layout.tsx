@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata =
 {
@@ -16,6 +17,7 @@ export default function RootLayout({children}: Readonly<
 		<html lang="en" className="scroll-smooth">
 			<body>
 				{children}
+				<ToastContainer />
 			</body>
 		</html>
 	);

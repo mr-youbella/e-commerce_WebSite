@@ -3,8 +3,7 @@ import {useActionState, useEffect, useRef, useState} from 'react';
 import { sendData } from "./actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStore } from "@fortawesome/free-solid-svg-icons";
-import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function FormAddProduct()
 {

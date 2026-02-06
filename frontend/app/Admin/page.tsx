@@ -10,14 +10,7 @@ import ButtonSetStatus from './ButtonSetStatus';
 export default async function Admin(): Promise<JSX.Element>
 {
 	let products: ProductsType[] | undefined = undefined;
-	try
-	{
-		products = await ProductApi();
-	}
-	catch (err)
-	{
-		console.log(err);
-	}
+	products = await ProductApi();
 	function getCategoryName(id: number): string
 	{
 		switch (id)
@@ -41,7 +34,7 @@ export default async function Admin(): Promise<JSX.Element>
 		{
 			case "pending": return ("text-yellow-600 bg-yellow-400/40");
 			case "approved": return ("text-green-600 bg-green-400/40");
-			case "needs changes": return ("text-blue-600 bg-blue-400/40");
+			case "needs_changes": return ("text-blue-600 bg-blue-400/40");
 			case "rejected": return ("text-red-600 bg-red-400/40");
 		}
 		return ("");
@@ -59,7 +52,7 @@ export default async function Admin(): Promise<JSX.Element>
 					<div className="bg-white rounded-xl border border-gray-400 shadow/45 border-l-yellow-600 border-l-6 px-8 py-7 flex gap-10">
 						<div className="space-y-2">
 							<h3>Pending Approval</h3>
-							<p className="font-bold text-3xl">1</p>
+							<p className="font-bold text-3xl">{products?.filter((value) => (value.status === "pending")).length}</p>
 						</div>
 						<div className="flex justify-center items-center text-4xl text-yellow-400/60">
 							<FontAwesomeIcon icon={faClock} />
@@ -67,8 +60,8 @@ export default async function Admin(): Promise<JSX.Element>
 					</div>
 					<div className="bg-white rounded-xl border border-gray-400 shadow/45 border-l-green-700 border-l-6 px-8 py-7 flex gap-10">
 						<div className="space-y-2">
-							<h3>Pending Approval</h3>
-							<p className="font-bold text-3xl">0</p>
+							<h3>Approved</h3>
+							<p className="font-bold text-3xl">{products?.filter((value) => (value.status === "approved")).length}</p>
 						</div>
 						<div className="flex justify-center items-center text-4xl text-green-400/60">
 							<FontAwesomeIcon icon={faCircleCheck} />
@@ -76,8 +69,8 @@ export default async function Admin(): Promise<JSX.Element>
 					</div>
 					<div className="bg-white rounded-xl border border-gray-400 shadow/45 border-l-red-700 border-l-6 px-8 py-7 flex gap-10">
 						<div className="space-y-2">
-							<h3>Pending Approval</h3>
-							<p className="font-bold text-3xl">0</p>
+							<h3>Rejected</h3>
+							<p className="font-bold text-3xl">{products?.filter((value) => (value.status === "rejected")).length}</p>
 						</div>
 						<div className="flex justify-center items-center text-4xl text-red-400/60">
 							<FontAwesomeIcon icon={faXmark} />
@@ -85,8 +78,8 @@ export default async function Admin(): Promise<JSX.Element>
 					</div>
 					<div className="bg-white rounded-xl border border-gray-400 shadow/45 border-l-blue-700 border-l-6 px-8 py-7 flex gap-10">
 						<div className="space-y-2">
-							<h3>Pending Approval</h3>
-							<p className="font-bold text-3xl">1</p>
+							<h3>Needs Revision</h3>
+							<p className="font-bold text-3xl">{products?.filter((value) => (value.status === "needs_changes")).length}</p>
 						</div>
 						<div className="flex justify-center items-center text-4xl text-blue-400/60">
 							<FontAwesomeIcon icon={faExclamation} />
@@ -142,7 +135,7 @@ export default async function Admin(): Promise<JSX.Element>
 								<p className="flex-1 my-auto">{getCategoryName(value.category)}</p>
 								<p className={`flex-1 my-auto text-sm p-0.5 rounded-xl ${statusStyle(value.status!)} font-bold capitalize`}>{value.status}</p>
 								<p className="flex-1 my-auto">Jan 15</p>
-								<ButtonSetStatus />
+								<ButtonSetStatus id={value.id}/>
 						</div>
 						);
 					})}

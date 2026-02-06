@@ -33,7 +33,7 @@ server.get("/products", async (req, res) =>
 {
 	if (req.headers["secret-key"] === process.env.SECRET_KEY)
 	{
-		const {rows} = await server.pg.query("SELECT * FROM products");
+		const {rows} = await server.pg.query("SELECT * FROM products ORDER BY id");
 		return (rows);
 	}
 	res.status(401);
@@ -113,6 +113,14 @@ server.post<{Body: UsersType}>("/login", async (req, res) =>
 server.get("/verfiy", {preHandler: async (req) => {await req.jwtVerify()}}, async (req) =>
 {
 	return { ok: true };
+});
+
+server.patch<{Body: {id: number, status: string}}>("/productStatus", async (req, res) =>
+{
+	const	body = await req.body;
+	const	product_id = body.id;
+	const	product_status = body.status;
+	server.pg.query(`UPDATE products SET status='${product_status}' WHERE id=${product_id}`)
 });
 
 server.listen({port: Number(process.env.PORT) || 3001, host: "0.0.0.0"}, (error, address) =>

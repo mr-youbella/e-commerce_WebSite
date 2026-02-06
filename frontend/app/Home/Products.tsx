@@ -8,14 +8,7 @@ import { faLaptop, faGift, faShirt, faSpa, faHouse, faBaby, faDumbbell, faBook, 
 export default async function Products()
 {
 	let products: ProductsType[] | undefined = undefined;
-	try
-	{
-		products = await ProductApi();
-	}
-	catch (err)
-	{
-		console.log(err);
-	}
+	products = await ProductApi();
 
 	return (
 		<main className="mx-2 xl:mx-50 3xl:mx-150" id="products">
